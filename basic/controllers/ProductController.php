@@ -39,6 +39,7 @@ class ProductController extends Controller
             'query' => Product::find(),
         ]);
 
+        $dataProvider->pagination->pageSize = 3;
         return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);
