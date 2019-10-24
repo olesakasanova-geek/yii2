@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\TestService;
 use app\models\Product;
 use yii\web\Controller;
 
@@ -17,16 +18,16 @@ class TestController extends Controller
      */
     public function actionIndex()
     {
-        $product = new Product();
-        $product->id = 1;
-        $product->price = 100;
-        $product->title= 'yeti';
-        $product->category = 'car';
+        $product = new Product([
+            'id' => 1, 'price' => 3500, 'title' => 'in-IZI', 'category' => 'dress'
+        ]);
+
+        //return Yii::$app->test->run();
 
         return $this->render('index',
-            [
-                'var'=> 'data','product' => $product
-            ]);
-        //return $this->render('about');
+            ['var' => 'data', 'product' => $product]
+        );
     }
 }
+
+
