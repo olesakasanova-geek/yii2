@@ -30,9 +30,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
+            [
+                'attribute' => 'name',
+                'value' => '<b>'.$model->name.'</b>',
+                'format' => 'html',
+
+            ],
             'price',
-            'created_at',
+            [
+                    'attribute' => 'created_at',
+                    'format' => 'datetime',
+                    'contentOptions' => ['class' => 'small']
+            ],
         ],
     ]) ?>
 
