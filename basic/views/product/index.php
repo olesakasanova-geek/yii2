@@ -25,9 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
+            [
+                    'attribute' => 'name',
+                    'format' => 'html',
+                    'value' => function(\app\models\Product $model) {
+                         return '<b>'.$model->name.'</b>';
+
+                    }
+            ],
             'price',
-            'created_at',
+            'created_at:datetime',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
