@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\validators\RequiredValidator;
 
 /**
  * This is the model class for table "product".
@@ -14,6 +15,8 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    const SCENARIO_UPDATE = 'update';
+    const SCENARIO_CREATE = 'create';
     /**
      * {@inheritdoc}
      */
@@ -22,15 +25,28 @@ class Product extends \yii\db\ActiveRecord
         return 'product';
     }
 
+    public function scenarios()
+    {
+        return [
+          self::SCENARIO_DEFAULT => ['name', 'price', 'id'],
+
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['name', 'price', 'created_at'], 'required'],
+            [['name', 'price', 'created_at'], RequiredValidator::class],
             [['created_at'], 'integer'],
+            //[['id'], 'safe'],
             [['name', 'price'], 'string', 'max' => 50],
+
+            [['name'], 'filter', 'filter' => function($value){
+            return trim($value);
+            }],
         ];
     }
 
