@@ -1,4 +1,5 @@
 <?php
+use app\components\TestService;
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
@@ -15,13 +16,13 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'j8zLvEfyTCwlL-jtV8f5Cw_KZksL1Vyf',
+            'cookieValidationKey' => 'MgxEgkSz5smd3x0bCrJDvgbKcoLhNVBv',
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => yii\caching\FileCache::class,
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => app\models\User::class,
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -38,8 +39,15 @@ $config = [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class' => yii\log\FileTarget::class,
                     'levels' => ['error', 'warning'],
+                ],
+                [
+                    'class' => yii\log\FileTarget::class,
+                    'levels' => ['info'],
+                    'categories' => ['pay'],
+                    'logFile' => "@runtime/logs/pay.log",
+                    'logVars' => [],
                 ],
             ],
         ],
@@ -48,17 +56,13 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => array(
-                '' => 'site/index',
-                '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
-            ),
+            'rules' => [
+            ],
         ],
         'test' => [
-
             'class' => \app\components\TestService::class,
-            'property' => '123123'
-        ]
-
+            //'prop' => '12345',
+            ]
     ],
     'params' => $params,
 ];
