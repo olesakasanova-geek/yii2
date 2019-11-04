@@ -13,11 +13,10 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'name')->dropDownList([
-        'Dress' => 'первый',
-        'Skirt' => 'второй',
-        'Jersey' => 'третий',
-        'Jeans' => 'четвертый',
-        'Sweatshirt' => 'пятый',
+        'red dress' => 'первый',
+        'carnation dress' => 'второй',
+        'lavender dress' => 'третий',
+        'periwinkle dress' => 'четвертый'
     ]) ?>
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
