@@ -1,13 +1,13 @@
 <?php
 namespace app\components;
 
-class TestService
-{
-    public $property = 'default';
+use yii\base\Component;
 
+class TestService extends Component
+{
+    public $prop = 'default';
     public function run()
     {
-        return $this->property;
+        return $this->prop;
     }
-
 }
