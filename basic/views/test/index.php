@@ -1,8 +1,9 @@
 <?php
-/** @var $this yii\web\View
-* @var $var string
- * @var $product  \app\models\Product */
+/* @var $this yii\web\View */
+/* @xar $data string */
+/* @var $product \app\models\Product */
+
 ?>
-<h1>Header</h1>
-<?php
-echo \yii\widgets\DetailView::widget(['model' => $product]);
+
+<h1>Test</h1>
+<?= \yii\widgets\DetailView::widget(['model' => $product])  ?>
